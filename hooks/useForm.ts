@@ -37,5 +37,5 @@ export const useForm  = <T>(initialValues: T) => {
                 { name: e.currentTarget.name }
             )
         }
-    ]
+    ] as const
 }
