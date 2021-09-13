@@ -14,7 +14,7 @@ const useStatePage = () => {
     // const [email, setEmail] = useState("")
     const toast = useToast()
     const [number, reset] = useRandom()
-    const { data, loading } = useFetch(`http://numbersapi.com/${number}/trivia`)
+    const { data, loading } = useFetch(`https://numbersapi.com/${number}/trivia`)
     const { data: catData, loading: catLoading } = useFetch('https://api.thecatapi.com/v1/images/search', { 'x-api-key': catapi })
     const [isSending, setIsSending] = React.useState(false)
     const [values, handleChange] = useForm({ email: '' })
