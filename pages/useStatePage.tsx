@@ -3,22 +3,19 @@ import { Button, FormControl, FormLabel, Heading, Input, Skeleton, useToast } fr
 import EmailJs, { init } from 'emailjs-com'
 import * as React from 'react'
 import { BeatLoader } from 'react-spinners'
+import { config } from '../data/config'
 import useFetch from '../hooks/useFetch'
 import { useForm } from '../hooks/useForm'
 import useRandom from '../hooks/useRandom'
 
 init("user_aQSGslSHhfCOoOaUTxWO9");
-const EJS = {
-    service_id: 'service_vxoo96c',
-    template_id: 'template_wo7ipzo'
-}
-const CAT_API = '39e1dc90-cffa-46de-91e5-411dac6ebb78'
+const { emailjs, catapi } = config
 const useStatePage = () => {
     // const [email, setEmail] = useState("")
     const toast = useToast()
     const [number, reset] = useRandom()
     const { data, loading } = useFetch(`http://numbersapi.com/${number}/trivia`)
-    const { data: catData, loading: catLoading } = useFetch('https://api.thecatapi.com/v1/images/search', { 'x-api-key': CAT_API })
+    const { data: catData, loading: catLoading } = useFetch('https://api.thecatapi.com/v1/images/search', { 'x-api-key': catapi })
     const [isSending, setIsSending] = React.useState(false)
     const [values, handleChange] = useForm({ email: '' })
     const handleClickSend = () => {
@@ -28,7 +25,7 @@ const useStatePage = () => {
             cat: JSON.parse(catData)[0].url
         }
         setIsSending(true)
-        EmailJs.send(EJS.service_id, EJS.template_id, templateParams)
+        EmailJs.send(emailjs.service_id, emailjs.template_id, templateParams)
             .then(res => {
 
                 toast({ title: 'Email sent', status: "success" })
