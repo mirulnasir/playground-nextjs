@@ -1,7 +1,12 @@
 import { useToast } from '@chakra-ui/toast'
 import * as React from 'react'
 
-export const useForm = (initialValues) => {
+interface INames {
+
+}
+
+
+export const useForm  = <T>(initialValues: T) => {
     const [values, setValues] = React.useState(initialValues)
     const [focus, setFocus] = React.useState({ name: '' })
     const toast = useToast()
@@ -19,7 +24,7 @@ export const useForm = (initialValues) => {
     })
     return [
         values,
-        (e) => {
+        (e: React.ChangeEvent<HTMLInputElement>) => {
             setValues(
                 {
                     ...values,
@@ -27,7 +32,7 @@ export const useForm = (initialValues) => {
                 }
             )
         },
-        e => {
+        (e: React.MouseEvent<HTMLInputElement>) => {
             setFocus(
                 { name: e.currentTarget.name }
             )
