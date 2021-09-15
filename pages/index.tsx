@@ -22,6 +22,20 @@ const Home: NextPage = () => {
               useState
             </Link>
           </ListItem>
+          <ListItem>
+
+            <Link as={NextLink} href="/useRefPage">
+              useRef
+            </Link>
+
+          </ListItem>
+          <ListItem>
+
+
+            <Link as={NextLink} href="/useCallbackPage">
+              useCallback
+            </Link>
+          </ListItem>
         </UnorderedList>
       </main>
 

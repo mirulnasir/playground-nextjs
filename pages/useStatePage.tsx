@@ -51,7 +51,7 @@ const useStatePage = () => {
                     <Box>
 
                         <VStack>
-                            <FormControl id="email" as={Flex} alignItems="center">
+                            <FormControl id="email" as={Flex} alignItems="center" >
                                 <FormLabel mb="0">Email:</FormLabel>
                                 <Input bg="white" type="email" name="email" value={values.email} onChange={handleChange} />
                             </FormControl>
